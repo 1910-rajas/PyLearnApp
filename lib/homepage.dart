@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:python_app1/routes.dart';
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.deepOrange,
+                  color: Colors.lightBlue,
                   borderRadius: BorderRadius.circular(8),
                 ),
               ))
