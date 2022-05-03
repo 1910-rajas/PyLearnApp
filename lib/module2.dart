@@ -21,17 +21,17 @@ class _HomeQuizState extends State<Mod2Page> {
         _totalScore++;
         correctAnswerSelected = true;
       }
-      _scoreTracker.add(
-        answerScore
-            ? Icon(
-                Icons.check_circle,
-                color: Colors.green,
-              )
-            : Icon(
-                Icons.clear,
-                color: Color.fromARGB(255, 255, 68, 0),
-              ),
-      );
+      // _scoreTracker.add(
+      //   answerScore
+      //       ? Icon(
+      //           Icons.check_circle,
+      //           color: Colors.green,
+      //         )
+      //       : Icon(
+      //           Icons.clear,
+      //           color: Color.fromARGB(255, 255, 68, 0),
+      //         ),
+      // );
 
       if (_questionIndex + 1 == _questions.length) {
         endofQuiz = true;
@@ -64,112 +64,121 @@ class _HomeQuizState extends State<Mod2Page> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Module 1 Quiz',
-          style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+          'Module 2 Quiz',
+          style: TextStyle(
+            color: Color.fromARGB(255, 255, 255, 255),
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       body: Center(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                if (_scoreTracker.length == 0)
-                  SizedBox(
-                    height: 50.0,
-                  ),
-                if (_scoreTracker.length > 0) ..._scoreTracker
-              ],
-            ),
-            Container(
-              width: double.infinity,
-              height: 150,
-              margin: EdgeInsets.only(bottom: 10.0, left: 30, right: 30),
-              padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 21, 21, 21),
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.black),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  if (_scoreTracker.length == 0)
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                  if (_scoreTracker.length > 0) ..._scoreTracker
+                ],
               ),
-              child: Center(
-                child: Text(
-                  _questions[_questionIndex]['question'].toString(),
-                  style: TextStyle(
-                    fontSize: 25,
-                    color: Color.fromARGB(255, 255, 255, 255),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            ...(_questions[_questionIndex]['answers']
-                    as List<Map<String, dynamic>>)
-                .map(
-              (answer) => Answer(
-                answerText: answer['answerText'].toString(),
-                answerColor: answerWasSelected
-                    ? answer['SCORE']
-                        ? Colors.green
-                        : Color.fromARGB(255, 228, 35, 21)
-                    : null,
-                answerTap: () {
-                  if (answerWasSelected) {
-                    return;
-                  }
-                  _questionAnswered(answer['SCORE']);
-                },
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 45),
-              ),
-              onPressed: () {
-                if (!answerWasSelected) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text(
-                        'Please Select an Answer before going to next Question!'),
-                  ));
-                  return;
-                }
-                _nextQuestion();
-              },
-              child: Text(
-                endofQuiz ? 'Restart Quiz' : "Next Question",
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.all(30),
-              child: Text(
-                '${_totalScore.toString()}/${_questions.length}',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-            ),
-            if (answerWasSelected)
               Container(
-                height: 90,
                 width: double.infinity,
-                color: correctAnswerSelected
-                    ? Colors.green
-                    : Color.fromARGB(255, 253, 66, 53),
+                height: 250,
+                margin: EdgeInsets.only(bottom: 10.0, left: 30, right: 30),
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 63, 65, 68),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.black),
+                ),
                 child: Center(
                   child: Text(
-                    correctAnswerSelected
-                        ? 'Well Done! You got it right'
-                        : 'Wrong!!',
+                    _questions[_questionIndex]['question'].toString(),
                     style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                      fontSize: 26,
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
-          ],
+              SizedBox(
+                height: 10,
+              ),
+              ...(_questions[_questionIndex]['answers']
+                      as List<Map<String, dynamic>>)
+                  .map(
+                (answer) => Answer(
+                  answerText: answer['answerText'].toString(),
+                  answerColor: answerWasSelected
+                      ? answer['SCORE']
+                          ? Colors.green
+                          : Color.fromARGB(255, 253, 109, 109)
+                      : null,
+                  answerTap: () {
+                    if (answerWasSelected) {
+                      return;
+                    }
+                    _questionAnswered(answer['SCORE']);
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(double.infinity, 45),
+                ),
+                onPressed: () {
+                  if (!answerWasSelected) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(
+                          'Please Select an Answer before going to next Question!'),
+                    ));
+                    return;
+                  }
+                  _nextQuestion();
+                },
+                child: Text(
+                  endofQuiz ? 'Restart Quiz' : "Next Question",
+                  style: TextStyle(fontSize: 27),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(20),
+                child: Text(
+                  'Score : ${_totalScore.toString()}/${_questions.length}',
+                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                ),
+              ),
+              if (answerWasSelected)
+                Container(
+                  height: 50,
+                  width: 400,
+                  color: correctAnswerSelected
+                      ? Colors.green
+                      : Color.fromARGB(255, 255, 48, 48),
+                  child: Center(
+                    child: Text(
+                      correctAnswerSelected
+                          ? 'Well Done! You got it right'
+                          : 'Wrong!!',
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ),
+                ),
+              SizedBox(
+                height: 100,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -289,84 +298,104 @@ final _questions = const [
     ],
   },
   {
-    'question': '',
+    'question': ' Which of the following is not used as loop in Python?',
     'answers': [
-      {'answerText': '', 'SCORE': true},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
+      {'answerText': 'for loop', 'SCORE': false},
+      {'answerText': 'while loop', 'SCORE': false},
+      {'answerText': 'do-while loop', 'SCORE': true},
+      {'answerText': 'None of the above', 'SCORE': false},
     ],
   },
   {
-    'question': '',
+    'question': 'Which of the following is False regarding loops in Python?',
     'answers': [
-      {'answerText': '', 'SCORE': true},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
+      {
+        'answerText': 'Loops are used to perform certain tasks repeatedly.',
+        'SCORE': false
+      },
+      {
+        'answerText':
+            'While loop is used when multiple statements are to executed repeatedly until the given condition becomes False',
+        'SCORE': true
+      },
+      {
+        'answerText':
+            'While loop is used when multiple statements are to executed repeatedly until the given condition becomes True.',
+        'SCORE': false
+      },
+      {
+        'answerText':
+            'for loop can be used to iterate through the elements of lists.',
+        'SCORE': false
+      },
     ],
   },
   {
-    'question': '',
+    'question': 'Which one of the following is a valid Python if statement :',
     'answers': [
-      {'answerText': '', 'SCORE': true},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
+      {'answerText': ' if a>=2 :', 'SCORE': true},
+      {'answerText': ' if (a >= 2)', 'SCORE': false},
+      {'answerText': ' if (a => 22)', 'SCORE': false},
+      {'answerText': ' if a >= 22', 'SCORE': false},
     ],
   },
   {
-    'question': '',
+    'question':
+        'What keyword would you use to add an alternative condition to an if statement?',
     'answers': [
-      {'answerText': '', 'SCORE': true},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
+      {'answerText': 'else if', 'SCORE': true},
+      {'answerText': ' elseif', 'SCORE': false},
+      {'answerText': ' elif', 'SCORE': false},
+      {'answerText': ' None of the above', 'SCORE': false},
     ],
   },
   {
-    'question': '',
+    'question': 'Can we write if/else into one line in python?',
     'answers': [
-      {'answerText': '', 'SCORE': true},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
+      {'answerText': 'Yes', 'SCORE': true},
+      {'answerText': 'No', 'SCORE': false},
+      {'answerText': 'if/else not used in python', 'SCORE': false},
+      {'answerText': 'None of the above', 'SCORE': false},
     ],
   },
   {
-    'question': '',
+    'question': ' Which statement will check if a is equal to b?',
     'answers': [
-      {'answerText': '', 'SCORE': true},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
+      {'answerText': 'if a = b:', 'SCORE': false},
+      {'answerText': 'if a == b:', 'SCORE': true},
+      {'answerText': 'if a === c:', 'SCORE': false},
+      {'answerText': ' if a == b', 'SCORE': false},
     ],
   },
   {
-    'question': '',
+    'question': 'Does python have switch case statement?',
     'answers': [
-      {'answerText': '', 'SCORE': true},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
+      {'answerText': 'True', 'SCORE': false},
+      {'answerText': 'False', 'SCORE': true},
+      {
+        'answerText': 'Python has switch statement but we can not use it.',
+        'SCORE': false
+      },
+      {'answerText': 'None of the above', 'SCORE': false},
     ],
   },
   {
-    'question': '',
+    'question':
+        'A loop becomes infinite loop if a condition never becomes______?',
     'answers': [
-      {'answerText': '', 'SCORE': true},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
+      {'answerText': ' TRUE', 'SCORE': false},
+      {'answerText': 'Both A and C', 'SCORE': false},
+      {'answerText': 'Null', 'SCORE': false},
+      {'answerText': 'FALSE', 'SCORE': true},
     ],
   },
   {
-    'question': '',
+    'question': 'The continue statement can be used in?',
     'answers': [
-      {'answerText': '', 'SCORE': true},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
-      {'answerText': '', 'SCORE': false},
+      {'answerText': ' while loop', 'SCORE': false},
+      {'answerText': ' for loop', 'SCORE': false},
+      {'answerText': ' do-while', 'SCORE': false},
+      {'answerText': ' Both A and B', 'SCORE': true},
     ],
   },
 ];

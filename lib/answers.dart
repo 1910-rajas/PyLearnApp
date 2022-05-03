@@ -26,7 +26,9 @@ class Answer extends StatelessWidget {
         child: Text(
           answerText,
           style: TextStyle(
-            fontSize: 15,
+            fontSize: 17,
+            color: Color.fromARGB(255, 0, 0, 0),
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

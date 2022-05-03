@@ -5,26 +5,26 @@ class QuizListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Color.fromARGB(255, 20, 20, 20),
+      color: Color.fromARGB(255, 39, 37, 37),
       child: Column(
         children: [
           SizedBox(
-            height: 100.0,
+            height: 80.0,
           ),
           InkWell(
             onTap: () {
               Navigator.pushNamed(context, MyRoutes.mod1Route);
             },
             child: Container(
-              width: 300,
+              width: 250,
               height: 100,
               alignment: Alignment.center,
               child: Text(
-                "Module 1",
+                "Module 1 Quiz",
                 style: TextStyle(
                   color: Color.fromARGB(255, 255, 255, 255),
                   fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  fontSize: 27,
                 ),
               ),
               decoration: BoxDecoration(
@@ -34,22 +34,22 @@ class QuizListPage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 20.0,
+            height: 25.0,
           ),
           InkWell(
             onTap: () {
               Navigator.pushNamed(context, MyRoutes.mod2Route);
             },
             child: Container(
-              width: 300,
+              width: 250,
               height: 100,
               alignment: Alignment.center,
               child: Text(
-                "Module 2",
+                "Module 2 Quiz",
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  fontSize: 27,
                 ),
               ),
               decoration: BoxDecoration(
@@ -59,22 +59,22 @@ class QuizListPage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 20.0,
+            height: 25.0,
           ),
           InkWell(
             onTap: () {
               Navigator.pushNamed(context, MyRoutes.mod3Route);
             },
             child: Container(
-              width: 300,
+              width: 250,
               height: 100,
               alignment: Alignment.center,
               child: Text(
-                "Module 3",
+                "Module 3 Quiz",
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  fontSize: 27,
                 ),
               ),
               decoration: BoxDecoration(
@@ -84,22 +84,22 @@ class QuizListPage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 20.0,
+            height: 25.0,
           ),
           InkWell(
             onTap: () {
               Navigator.pushNamed(context, MyRoutes.mod4Route);
             },
             child: Container(
-              width: 300,
+              width: 250,
               height: 100,
               alignment: Alignment.center,
               child: Text(
-                "Module 4",
+                "Module 4 Quiz",
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  fontSize: 27,
                 ),
               ),
               decoration: BoxDecoration(
@@ -109,22 +109,22 @@ class QuizListPage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 20.0,
+            height: 25.0,
           ),
           InkWell(
             onTap: () {
               Navigator.pushNamed(context, MyRoutes.mod5Route);
             },
             child: Container(
-              width: 300,
+              width: 250,
               height: 100,
               alignment: Alignment.center,
               child: Text(
-                "Module 5",
+                "Module 5 Quiz",
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  fontSize: 27,
                 ),
               ),
               decoration: BoxDecoration(

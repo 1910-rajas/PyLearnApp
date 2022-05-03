@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
             fit: BoxFit.fill,
           ),
           SizedBox(
-            height: 50.0,
+            height: 30.0,
           ),
           /*    ElevatedButton(
               child: Text("Start Learning"),
@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
               },
               child: Container(
                 width: 200,
-                height: 50,
+                height: 60,
                 alignment: Alignment.center,
                 child: Text(
                   "Start Learning!",

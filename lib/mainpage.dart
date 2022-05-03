@@ -9,7 +9,7 @@ class MainPage extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 220.0,
+            height: 350.0,
           ),
           InkWell(
             onTap: () {
