@@ -231,15 +231,6 @@ final _questions = const [
     ],
   },
   {
-    'question': 'HERE GOES QUES',
-    'answers': [
-      {'answerText': 'OPTION', 'SCORE': true},
-      {'answerText': 'OPTION', 'SCORE': false},
-      {'answerText': 'OPTION', 'SCORE': false},
-      {'answerText': 'OPTION', 'SCORE': false},
-    ],
-  },
-  {
     'question': 'Which of the following cannot be a variable?',
     'answers': [
       {'answerText': '__init__', 'SCORE': false},
