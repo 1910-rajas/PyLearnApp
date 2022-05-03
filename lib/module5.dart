@@ -161,7 +161,7 @@ class _HomeQuizState extends State<Mod5Page> {
                   width: 400,
                   color: correctAnswerSelected
                       ? Colors.green
-                      : Color.fromARGB(255, 255, 48, 48),
+                      : Color.fromARGB(255, 253, 109, 109),
                   child: Center(
                     child: Text(
                       correctAnswerSelected
